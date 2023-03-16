@@ -2,20 +2,20 @@ let lightButton = document.querySelector(".btnLight");
 let darkButton = document.querySelector(".btnDark");
 
 
-lightButton.addEventListener("click", changeToLightMode);
-darkButton.addEventListener("click", changeToDarkMode);
+lightButton.addEventListener("click", () => changeMode("black", "white"));
+darkButton.addEventListener("click", () => changeMode("white", "black"));
 
 
-function changeToDarkMode() {
-    document.body.style.background = "black";
+function changeMode(color, backgroundColor) {
+    document.body.style.backgroundColor = backgroundColor;
     let button = document.querySelectorAll(".btn");
-    button.forEach(button => button.style.borderColor = "white");
-    button.forEach(button => button.style.color = "white");
+    button.forEach(button => button.style.borderColor = color);
+    button.forEach(button => button.style.color = color);
 }
 
-function changeToLightMode() {
-    document.body.style.background = "white";
-    let button = document.querySelectorAll(".btn");
-    button.forEach(button => button.style.borderColor = "black");
-    button.forEach(button => button.style.color = "black");
-}
+// function changeToLightMode() {
+//     document.body.style.backgroundColor = "white";
+//     let button = document.querySelectorAll(".btn");
+//     button.forEach(button => button.style.borderColor = "black");
+//     button.forEach(button => button.style.color = "black");
+// }
