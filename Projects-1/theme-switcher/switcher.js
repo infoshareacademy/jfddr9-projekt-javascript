@@ -8,9 +8,9 @@ darkButton.addEventListener("click", () => changeMode("white", "black"));
 
 function changeMode(color, backgroundColor) {
     document.body.style.backgroundColor = backgroundColor;
-    let button = document.querySelectorAll(".btn");
-    button.forEach(button => button.style.borderColor = color);
-    button.forEach(button => button.style.color = color);
+    let buttons = document.querySelectorAll(".btn");
+    buttons.forEach(buttons => buttons.style.borderColor = color);
+    buttons.forEach(buttons => buttons.style.color = color);
 }
 
 // function changeToLightMode() {
