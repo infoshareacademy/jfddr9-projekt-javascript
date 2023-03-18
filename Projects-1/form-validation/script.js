@@ -1,31 +1,21 @@
-
-     
-
-
-const getValues = () => {
-    firstName = document.querySelector('#validationCustom01').value;
-    lastName = document.querySelector('#validationCustom02').value;
-    userName = document.querySelector('#validationCustomUsername').value;
-    city = document.querySelector('#validationCustom03').value;
-    state = document.querySelector('#validationCustom04').value;
-    zip = document.querySelector('#validationCustom05').value;
-}
-
 const checkThisInput = (event) => {
 
-    getValues();
+    let firstName = document.querySelector('#validationCustom01').value;
+    let lastName = document.querySelector('#validationCustom02').value;
+    let userName = document.querySelector('#validationCustomUsername').value;
+    let city = document.querySelector('#validationCustom03').value;
+    let state = document.querySelector('#validationCustom04').value;
+    let zip = document.querySelector('#validationCustom05').value;
 
     switch(event.srcElement.id)
     {
         case 'validationCustom01':
             if(firstName.length>=10 && firstName.length<=100 && firstName.match(regExpOnlyLetters))
             {
-                console.log('git');
                 validation[0] = true;
                 checkInputs();
             }
             else {
-                console.log('nie git');
                 validation[0] = false;
                 checkInputs();
             }
@@ -35,18 +25,15 @@ const checkThisInput = (event) => {
             {
                 if(lastName.match(regExpOnlyOneHyphen) || lastName.match(regExpOnlyLetters))    //być może da radę zrobić to lepiej za pomocą jednego regExpa
                 {
-                    console.log('git');
                     validation[1] = true;
                     checkInputs();
                 }
                 else {
-                    console.log('nie git');
                     validation[1] = false;
                     checkInputs();
                 }
             }
             else {
-                console.log('nie git');
                 validation[1] = false;
                 checkInputs();
             }
@@ -55,12 +42,10 @@ const checkThisInput = (event) => {
         case 'validationCustomUsername':
             if(userName.length>=10 && userName.length<=30 && userName.match(regExpUsername))
             {
-                console.log('git');
                 validation[2] = true;
                 checkInputs();
             }
             else {
-                console.log('nie git');
                 validation[2] = false;
                 checkInputs();
             }
@@ -69,12 +54,10 @@ const checkThisInput = (event) => {
         case 'validationCustom03':
             if(city==='Bydgoszcz')
             {
-                console.log('git');
                 validation[3] = true;
                 checkInputs();
             }
             else {
-                console.log('nie git');
                 validation[3] = false;
                 checkInputs();
             }
@@ -83,39 +66,34 @@ const checkThisInput = (event) => {
         case 'validationCustom04':
             if(state==='kuj-pomorskie' || state==='Kujawsko-pomorskie' || state==='kuj-pom')
             {
-                console.log('git');
                 validation[4] = true;
                 checkInputs();
             }
             else {
-                console.log('nie git');
                 validation[4] = false;
                 checkInputs();
             }
-            //check name
             break;
         case 'validationCustom05':
             if(zip.match(regExpZip) && zip.slice(3)<=980)
             {
-                console.log('git');
                 validation[5] = true;
                 checkInputs();
             }
             else {
-                console.log('nie git');
                 validation[5] = false;
                 checkInputs();
             }
-            break;    
+            break;
     }
 }
 
 
 const checkInputs = () => {
 
-    if(validation.every( valid => valid===true))
+
+    if(validation.every( valid => valid) && tos.checked)
     {
-        console.log('denied');
         submitBtn.disabled = false;
     }
     else {
@@ -133,11 +111,9 @@ const showError = (event) => {
             if(validation[0])
             {
                 document.querySelector('.first-name').style.display = 'none';
-                console.log('no error');
             }
             else {
                 document.querySelector('.first-name').style.display = 'block';
-                console.log('error');
             }
             break;
         case 'validationCustom02':
@@ -145,7 +121,6 @@ const showError = (event) => {
             if(validation[1])
             {
                 document.querySelector('.last-name').style.display = 'none';
-                console.log('no error');
             }
             else {
                 document.querySelector('.last-name').style.display = 'block';
@@ -157,19 +132,17 @@ const showError = (event) => {
             if(validation[2])
             {
                 document.querySelector('.username').style.display = 'none';
-                console.log('no error');
             }
             else {
                 document.querySelector('.username').style.display = 'block';
             }
-            
+
             break;
         case 'validationCustom03':
 
             if(validation[3])
             {
                 document.querySelector('.city').style.display = 'none';
-                console.log('no error');
             }
             else {
                 document.querySelector('.city').style.display = 'block';
@@ -181,7 +154,6 @@ const showError = (event) => {
             if(validation[4])
             {
                 document.querySelector('.state').style.display = 'none';
-                console.log('no error');
             }
             else {
                 document.querySelector('.state').style.display = 'block';
@@ -193,24 +165,19 @@ const showError = (event) => {
             if(validation[5])
             {
                 document.querySelector('.zip').style.display = 'none';
-                console.log('no error');
             }
             else {
                 document.querySelector('.zip').style.display = 'block';
             }
             
-            break;    
+            break;
     }
 }
 
-    let firstName; 
-    let lastName; 
-    let userName; 
-    let city; 
-    let state; 
-    let zip;
-    
-    let validation = [false, false, false, false, false, false];
+let tos = document.querySelector('.form-check-input');
+tos.addEventListener('click', checkInputs);
+
+let validation = [false, false, false, false, false, false];
 
 const regExpOnlyLetters = /^[a-zA-Z]+$/;
 const regExpLastName = /^[A-Za-z-]+$/;
@@ -222,7 +189,6 @@ let submitBtn = document.querySelector('.btn-primary');
 
 submitBtn.disabled = true;
 
-
 let inputs = document.querySelectorAll('.form-control');
 
 for (let input of inputs)
@@ -230,7 +196,3 @@ for (let input of inputs)
     input.addEventListener('focusout', showError);
     input.addEventListener('input', checkThisInput);
 }
-
-
-
-
