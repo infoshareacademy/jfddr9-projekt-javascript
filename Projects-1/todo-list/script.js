@@ -1,15 +1,18 @@
-let button = document.querySelector("button.btn");
+let button = document.querySelector(".btn-primary");
 
 button.addEventListener("click", addToList);
 
-const todos = []; //ten todos to nazwa tablicy
+const todos = [];
+
 function addToList() {
-  let input = document.getElementById("task");
+  let input = document.querySelector("input.form-control");
   let task = input.value;
+
   todos.push(task);
 
-  let table = document.querySelector("#todos"); //ten todos to odwołanie do elementu z HTML
+  let table = document.querySelector("#todos");
   let newTaskElement = document.createElement("tr");
+
   newTaskElement.innerText = task;
   table.appendChild(newTaskElement);
   input.value = "";
