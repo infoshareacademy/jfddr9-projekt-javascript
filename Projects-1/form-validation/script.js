@@ -64,7 +64,6 @@ const checkThisInput = (event) => {
                 validation[2] = true;
                 checkInputs();
             }
-            
             break;
         case 'validationCustom03':
             let city = document.querySelector('#validationCustom03').value;
@@ -106,10 +105,7 @@ const checkThisInput = (event) => {
     }
 }
 
-
 const checkInputs = () => {
-
-
     if(validation.every( valid => valid) && tos.checked)
     {
         submitBtn.disabled = false;
@@ -117,7 +113,18 @@ const checkInputs = () => {
     else {
         submitBtn.disabled = true;
     }
+}
 
+const ifDisplayError = (index, whatErr, event) => {
+
+    if(validation[index])
+            {
+                whatErr.style.display = 'none';
+            }
+            else {
+                checkThisInput(event);
+                whatErr.style.display = 'block';
+            }
 }
 
 const showError = (event) => {
@@ -125,72 +132,23 @@ const showError = (event) => {
     switch(event.srcElement.id)
     {
         case 'validationCustom01':
-
-            if(validation[0])
-            {
-                errFirstName.style.display = 'none';
-            }
-            else {
-                checkThisInput(event);
-                errFirstName.style.display = 'block';
-            }
+            ifDisplayError(0, errFirstName, event);  
             break;
         case 'validationCustom02':
-
-            if(validation[1])
-            {
-                errLastName.style.display = 'none';
-            }
-            else {
-                checkThisInput(event);
-                errLastName.style.display = 'block';
-            }
+            ifDisplayError(1, errLastName, event);
             break;
         case 'validationCustomUsername':
-
-            if(validation[2])
-            {
-                errUserName.style.display = 'none';
-            }
-            else {
-                checkThisInput(event);
-                errUserName.style.display = 'block';
-            }
-
+            ifDisplayError(2, errUserName, event);
             break;
         case 'validationCustom03':
-
-            if(validation[3])
-            {
-                document.querySelector('.city').style.display = 'none';
-            }
-            else {
-                document.querySelector('.city').style.display = 'block';
-            }
-            
+            ifDisplayError(3, errCity, event);
             break;
         case 'validationCustom04':
-
-            if(validation[4])
-            {
-                document.querySelector('.state').style.display = 'none';
-            }
-            else {
-                document.querySelector('.state').style.display = 'block';
-            }
-            
+            ifDisplayError(4, errState, event);
             break;
         case 'validationCustom05':
-
-            if(validation[5])
-            {
-                document.querySelector('.zip').style.display = 'none';
-            }
-            else {
-                document.querySelector('.zip').style.display = 'block';
-            }
-            
-            break;
+            ifDisplayError(5, errZip, event);
+         break;
     }
 }
 
@@ -200,7 +158,9 @@ tos.addEventListener('click', checkInputs);
 let errFirstName = document.querySelector('.first-name');
 let errLastName = document.querySelector('.last-name');
 let errUserName = document.querySelector('.username');
-
+let errCity = document.querySelector('.city');
+let errState = document.querySelector('.state');
+let errZip = document.querySelector('.zip');
 
 let validation = [false, false, false, false, false, false];
 
