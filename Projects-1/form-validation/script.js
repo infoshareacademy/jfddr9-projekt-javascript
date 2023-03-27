@@ -1,57 +1,73 @@
+const errDisplay = (valIndex, errWhat, errMessage) => {
+    validation[valIndex] = false;
+    checkInputs();
+    errWhat.innerHTML = errMessage;
+}
+
 const checkThisInput = (event) => {
-
-    let firstName = document.querySelector('#validationCustom01').value;
-    let lastName = document.querySelector('#validationCustom02').value;
-    let userName = document.querySelector('#validationCustomUsername').value;
-    let city = document.querySelector('#validationCustom03').value;
-    let state = document.querySelector('#validationCustom04').value;
-    let zip = document.querySelector('#validationCustom05').value;
-
+  
     switch(event.srcElement.id)
     {
         case 'validationCustom01':
-            if(firstName.length>=10 && firstName.length<=100 && firstName.match(regExpOnlyLetters))
+            let firstName = document.querySelector('#validationCustom01').value;
+            if (!(firstName.length >= MIN_NAME_LENGTH))
             {
-                validation[0] = true;
-                checkInputs();
+                errDisplay(0, errFirstName, 'Name cannot have less than 10 characters');
+            }
+            else if (!(firstName.length <= MAX_NAME_LENGTH))
+            {
+                errDisplay(0, errFirstName, 'Name cannot have more than 100 characters');
+            }
+            else if (!(firstName.match(regExpOnlyLetters)))
+            {
+                errDisplay(0, errFirstName, 'Name must only contain letters');
             }
             else {
-                validation[0] = false;
+                validation[0] = true;
                 checkInputs();
             }
             break;
         case 'validationCustom02':
-            if(lastName.length>=10 && lastName.length<=100 && lastName.match(regExpLastName))
+            let lastName = document.querySelector('#validationCustom02').value;
+            if(!(lastName.length >= MIN_NAME_LENGTH))
             {
-                if(lastName.match(regExpOnlyOneHyphen) || lastName.match(regExpOnlyLetters))    //być może da radę zrobić to lepiej za pomocą jednego regExpa
-                {
-                    validation[1] = true;
-                    checkInputs();
-                }
-                else {
-                    validation[1] = false;
-                    checkInputs();
-                }
+                errDisplay(1, errLastName, 'Last name cannot have less than 10 characters');
+            }
+            else if(!(lastName.length <= MAX_NAME_LENGTH))
+            {
+                errDisplay(1, errLastName, 'Last name cannot have more than 100 characters');
+            }
+            else if(!((lastName.match(regExpLastName)) && (lastName.match(regExpOnlyOneHyphen) || lastName.match(regExpOnlyLetters))))
+            {
+                errDisplay(1, errLastName, 'Last name must only contein letters. (May contain one hyphen)');
             }
             else {
-                validation[1] = false;
+                validation[1] = true;
                 checkInputs();
             }
-            //check last
             break;
         case 'validationCustomUsername':
-            if(userName.length>=10 && userName.length<=30 && userName.match(regExpUsername))
+            let userName = document.querySelector('#validationCustomUsername').value;
+            if(!(userName.length >= MIN_USERNAME_LENGTH))
             {
+                errDisplay(2, errUserName, 'Username cannot have less than 10 characters');
+            }
+            else if(!(userName.length <= MAX_USERNAME_LENGTH))
+            {
+                errDisplay(2, errUserName, 'Username cannot have more than 30 characters');
+            }
+            else if(!(userName.match(regExpUsername)))
+            {
+                errDisplay(2, errUserName, 'Username must contain only letters and numbers');
+            }
+            else {
                 validation[2] = true;
                 checkInputs();
             }
-            else {
-                validation[2] = false;
-                checkInputs();
-            }
-            //check name
+            
             break;
         case 'validationCustom03':
+            let city = document.querySelector('#validationCustom03').value;
             if(city==='Bydgoszcz')
             {
                 validation[3] = true;
@@ -61,9 +77,10 @@ const checkThisInput = (event) => {
                 validation[3] = false;
                 checkInputs();
             }
-            //check last
+
             break;
         case 'validationCustom04':
+            let state = document.querySelector('#validationCustom04').value;
             if(state==='kuj-pomorskie' || state==='Kujawsko-pomorskie' || state==='kuj-pom')
             {
                 validation[4] = true;
@@ -75,7 +92,8 @@ const checkThisInput = (event) => {
             }
             break;
         case 'validationCustom05':
-            if(zip.match(regExpZip) && zip.slice(3)<=980)
+            let zip = document.querySelector('#validationCustom05').value;
+            if(zip.match(regExpZip) && zip.slice(3) <= MAX_ZIP_NUMBER)
             {
                 validation[5] = true;
                 checkInputs();
@@ -110,31 +128,33 @@ const showError = (event) => {
 
             if(validation[0])
             {
-                document.querySelector('.first-name').style.display = 'none';
+                errFirstName.style.display = 'none';
             }
             else {
-                document.querySelector('.first-name').style.display = 'block';
+                checkThisInput(event);
+                errFirstName.style.display = 'block';
             }
             break;
         case 'validationCustom02':
 
             if(validation[1])
             {
-                document.querySelector('.last-name').style.display = 'none';
+                errLastName.style.display = 'none';
             }
             else {
-                document.querySelector('.last-name').style.display = 'block';
+                checkThisInput(event);
+                errLastName.style.display = 'block';
             }
-            
             break;
         case 'validationCustomUsername':
 
             if(validation[2])
             {
-                document.querySelector('.username').style.display = 'none';
+                errUserName.style.display = 'none';
             }
             else {
-                document.querySelector('.username').style.display = 'block';
+                checkThisInput(event);
+                errUserName.style.display = 'block';
             }
 
             break;
@@ -177,7 +197,18 @@ const showError = (event) => {
 let tos = document.querySelector('.form-check-input');
 tos.addEventListener('click', checkInputs);
 
+let errFirstName = document.querySelector('.first-name');
+let errLastName = document.querySelector('.last-name');
+let errUserName = document.querySelector('.username');
+
+
 let validation = [false, false, false, false, false, false];
+
+const MIN_NAME_LENGTH = 10;
+const MAX_NAME_LENGTH = 100;
+const MIN_USERNAME_LENGTH = 10;
+const MAX_USERNAME_LENGTH = 30;
+const MAX_ZIP_NUMBER = 980;
 
 const regExpOnlyLetters = /^[a-zA-Z]+$/;
 const regExpLastName = /^[A-Za-z-]+$/;
