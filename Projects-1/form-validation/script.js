@@ -1,8 +1,8 @@
 const MIN_FIRST_NAME_LENGTH = 3;
 const MAX_FIRST_NAME_LENGTH = 100;
-const MIN_LAST_NAME_LENGTH = 10;
+const MIN_LAST_NAME_LENGTH = 5;
 const MAX_LAST_NAME_LENGTH = 100;
-const MIN_USERNAME_LENGTH = 10;
+const MIN_USERNAME_LENGTH = 7;
 const MAX_USERNAME_LENGTH = 100;
 
 let form = document.querySelector(".needs-validation");
@@ -19,153 +19,164 @@ let terms = document.querySelector(".form-check-input");
 let corrrectInputs = [false, false, false, false, false, false, false];
 submitBtn.disabled = true;
 
-function enableButtonIfAllFieldsFilled() {
+function enableButtonIfAllFieldsCorrect() {
   if (corrrectInputs.every((b) => b === true)) submitBtn.disabled = false;
   else submitBtn.disabled = true;
   console.log(corrrectInputs);
 }
-function showFirstNameErrorMessage(errorMessage){
-  const validationDiv = document.querySelector("#firstNameValidationMessage")
-  validationDiv.innerHTML = ''
-  const errorMessageP
+
+function showErrorMessage(errorMessage, validationDiv) {
+  validationDiv.innerHTML = "";
+  const errorMessageP = document.createElement("p");
+  errorMessageP.style.color = "red";
+  errorMessageP.innerText = errorMessage;
+  validationDiv.appendChild(errorMessageP);
 }
+
+function showCorrectMessage(validationDiv) {
+  validationDiv.innerHTML = "";
+  const errorMessageP = document.createElement("p");
+  errorMessageP.style.color = "#28a745";
+  errorMessageP.innerText = "Looks good!";
+  validationDiv.appendChild(errorMessageP);
+}
+
+function lettersOnly(text) {
+  return text.match("^[a-zA-Z]+$");
+}
+
+function lettersOnlyPossibleHyphen(text) {
+  return text.match("^[a-zA-Z]+-?([a-zA-z]+)?$");
+}
+
+function lettersAndNumbersOnly(text) {
+  return text.match("^[a-zA-Z0-9]+$");
+}
+
+function correctZip(text) {
+  const values = text.split("-");
+  values[1] = Number(values[1]);
+  return (
+    text.match("^[0-9]{2}-[0-9]{3}$") &&
+    values[0] == 85 &&
+    values[1] >= 0 &&
+    values[1] <= 980
+  );
+}
+
 firstName.addEventListener("change", function () {
   let inputText = firstName.value;
   let inputLength = inputText.length;
-  let validationDiv = document.querySelector(
-    "#validationCustom01 + .valid-feedback"
-  );
-  validationDiv.style.display = "block";
+  const validationDiv = document.querySelector("#firstNameValidationMessage");
+  validationDiv.innerHTML = "";
   corrrectInputs[0] = false;
   if (
     inputLength < MIN_FIRST_NAME_LENGTH ||
     inputLength > MAX_FIRST_NAME_LENGTH
   ) {
-    validationDiv.style.color = "red";
-    validationDiv.textContent = "Wrong input size";
-  } else if (!inputText.match("^[a-zA-Z]+$")) {
-    validationDiv.style.color = "red";
-    validationDiv.textContent = "Wrong input characters";
+    showErrorMessage("Wrong input size", validationDiv);
+  } else if (!lettersOnly(inputText)) {
+    showErrorMessage("Wrong input characters", validationDiv);
   } else {
-    validationDiv.style.color = "#28a745";
-    validationDiv.textContent = "Looks good!";
+    showCorrectMessage(validationDiv);
     corrrectInputs[0] = true;
   }
-  enableButtonIfAllFieldsFilled();
+  enableButtonIfAllFieldsCorrect();
 });
+
 lastName.addEventListener("change", function () {
   let inputText = lastName.value;
   let inputLength = inputText.length;
-  let validationDiv = document.querySelector(
-    "#validationCustom02 + .valid-feedback"
-  );
-  validationDiv.style.display = "block";
+  const validationDiv = document.querySelector("#lastNameValidationMessage");
+  validationDiv.innerHTML = "";
   corrrectInputs[1] = false;
   if (
     inputLength < MIN_LAST_NAME_LENGTH ||
     inputLength > MAX_LAST_NAME_LENGTH
   ) {
-    validationDiv.style.color = "red";
-    validationDiv.textContent = "Wrong input size";
-  } else if (!inputText.match("^[a-zA-Z]+-?([a-zA-z]+)?$")) {
-    validationDiv.style.color = "red";
-    validationDiv.textContent = "Wrong input characters";
+    showErrorMessage("Wrong input size", validationDiv);
+  } else if (!lettersOnlyPossibleHyphen(inputText)) {
+    showErrorMessage("Wrong input characters", validationDiv);
   } else {
-    validationDiv.style.color = "#28a745";
-    validationDiv.textContent = "Looks good!";
+    showCorrectMessage(validationDiv);
     corrrectInputs[1] = true;
   }
-  enableButtonIfAllFieldsFilled();
+  enableButtonIfAllFieldsCorrect();
 });
+
 username.addEventListener("change", function () {
   let inputText = username.value;
   let inputLength = username.value.length;
-  let validationDiv = document.querySelector(
-    "#validationCustomUsername + .invalid-feedback"
-  );
-  validationDiv.style.display = "block";
+  const validationDiv = document.querySelector("#usernameValidationMessage");
+  validationDiv.innerHTML = "";
   corrrectInputs[2] = false;
   if (inputLength < MIN_USERNAME_LENGTH || inputLength > MAX_USERNAME_LENGTH) {
-    validationDiv.style.color = "red";
-    validationDiv.textContent = "Wrong input size";
-  } else if (!inputText.match("^[a-zA-Z0-9]+$")) {
-    validationDiv.style.color = "red";
-    validationDiv.textContent = "Wrong input characters";
+    showErrorMessage("Wrong input size", validationDiv);
+  } else if (!lettersAndNumbersOnly(inputText)) {
+    showErrorMessage("Wrong input characters", validationDiv);
   } else {
-    validationDiv.style.color = "#28a745";
-    validationDiv.textContent = "Looks good!";
+    showCorrectMessage(validationDiv);
     corrrectInputs[2] = true;
   }
-  enableButtonIfAllFieldsFilled();
+  enableButtonIfAllFieldsCorrect();
 });
+
 city.addEventListener("change", function () {
   let inputText = city.value;
-  console.log(inputText);
-  let validationDiv = document.querySelector(
-    "#validationCustom03 + .invalid-feedback"
-  );
-  validationDiv.style.display = "block";
+  const validationDiv = document.querySelector("#cityValidationMessage");
+  validationDiv.innerHTML = "";
   corrrectInputs[3] = false;
   if (inputText !== "Bydgoszcz") {
-    validationDiv.style.color = "red";
-    validationDiv.textContent = "Please provide a valid city.";
+    showErrorMessage("Please provide a valid city.", validationDiv);
   } else {
-    validationDiv.style.color = "#28a745";
-    validationDiv.textContent = "Looks good!";
+    showCorrectMessage(validationDiv);
     corrrectInputs[3] = true;
   }
-  enableButtonIfAllFieldsFilled();
+  enableButtonIfAllFieldsCorrect();
 });
+
 state.addEventListener("change", function () {
   let inputText = state.value;
-  console.log(inputText);
-  let validationDiv = document.querySelector(
-    "#validationCustom04 + .invalid-feedback"
-  );
-  validationDiv.style.display = "block";
+  const validationDiv = document.querySelector("#stateValidationMessage");
+  validationDiv.innerHTML = "";
   corrrectInputs[4] = false;
   if (
     inputText !== "Kujawsko-pomorskie" &&
     inputText !== "kuj-pom" &&
     inputText !== "kuj-pomorskie"
   ) {
-    validationDiv.style.color = "red";
-    validationDiv.textContent = "Please provide a valid state.";
+    showErrorMessage("Please provide a valid state.", validationDiv);
   } else {
-    validationDiv.style.color = "#28a745";
-    validationDiv.textContent = "Looks good!";
+    showCorrectMessage(validationDiv);
     corrrectInputs[4] = true;
   }
-  enableButtonIfAllFieldsFilled();
+  enableButtonIfAllFieldsCorrect();
 });
+
 zip.addEventListener("change", function () {
   let inputText = zip.value;
-  let validationDiv = document.querySelector(
-    "#validationCustom05 + .invalid-feedback"
-  );
-  validationDiv.style.display = "block";
-  const values = inputText.split("-");
+  const validationDiv = document.querySelector("#zipValidationMessage");
+  validationDiv.innerHTML = "";
 
-  values[1] = Number(values[1]);
   corrrectInputs[5] = false;
-  if (!inputText.match("^[0-9]{2}-[0-9]{3}$")) {
-    validationDiv.style.color = "red";
-    validationDiv.textContent = "Invalid input, expected format 00-000.";
-  } else if (values[0] == 85 && values[1] > 0 && values[1] < 980) {
-    validationDiv.style.color = "green";
-    validationDiv.textContent = "Looks good.";
-    corrrectInputs[5] = true;
+  if (!correctZip(inputText)) {
+    showErrorMessage("Please provide a valid zip.", validationDiv);
   } else {
-    validationDiv.style.color = "red";
-    validationDiv.textContent = "Please provide a valid zip.";
+    showCorrectMessage(validationDiv);
+    corrrectInputs[5] = true;
   }
-  enableButtonIfAllFieldsFilled();
+  enableButtonIfAllFieldsCorrect();
 });
 
 terms.addEventListener("change", function () {
   let checkbox = document.querySelector(".form-check-input");
-  if (checkbox.checked) corrrectInputs[6] = true;
-  else corrrectInputs[6] = false;
-
-  enableButtonIfAllFieldsFilled();
+  const validationDiv = document.querySelector("#checkboxValidationMessage");
+  if (checkbox.checked) {
+    showCorrectMessage(validationDiv);
+    corrrectInputs[6] = true;
+  } else {
+    showErrorMessage("You must agree to terms.", validationDiv);
+    corrrectInputs[6] = false;
+  }
+  enableButtonIfAllFieldsCorrect();
 });
