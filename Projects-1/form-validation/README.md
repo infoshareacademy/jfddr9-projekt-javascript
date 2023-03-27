@@ -3,7 +3,7 @@
 ## Wymagania
 
 1. Jeżeli nie zostały wypełnione wszystkie pola, przycisk `Submit form` powinien być `disabled`
-2. Zasada ogólna - po tym jak użytkownik wypełni dane pole musi nastąpić jego walidacja oraz w przypadku wystąpienia błedu, wyświetlenie komunikatu  
+2. Zasada ogólna - po tym jak użytkownik wypełni dane pole musi nastąpić jego walidacja oraz w przypadku wystąpienia błedu, wyświetlenie komunikatu
 3. `First Name` - imie powinno zawierać od 10 do maksymalnie 100 znaków (wyłącznie liter)
 4. `Last Name` - nazwisko powinno zawierać od 10 do maksymalnie 100 znaków (wyłącznie liter), oraz opcjonalnie jeden
    myślnik dla nazwisk z dwóch członów
@@ -15,4 +15,4 @@
    zweryfikowana czy mieści się w podanym zakresie oraz, czy ma prawidłowy format.
 9. `Agree to terms and conditions` - zgoda musi być zaakceptowana
 10. W przypadku złamania zasad dla danego pola powinien pojawić się komunikat, dla którego pola wystąpił błąd tzn. jeżeli podałem imię, które ma więcej niż 100 znaków powinienem otrzymać komunikat `First name invalid`
-11. [Dla chętnych] możecie dostosować wiadomość błędu dla każdego pola i przypadku złamania walidacji np. `First name too long. Max length is 100 charts.`, które pojawiają się bezpośrednio pod nim 
+11. [Dla chętnych] możecie dostosować wiadomość błędu dla każdego pola i przypadku złamania walidacji np. `First name too long. Max length is 100 charts.`, które pojawiają się bezpośrednio pod nim
