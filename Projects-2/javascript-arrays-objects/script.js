@@ -245,8 +245,30 @@ function checkJuniorReq(students, requirements) {
 }
 
 checkJuniorReq(students, requirements)
+console.log('-------------------------')
 
 // Zadanie 12.
+
+function toCamelCase(str) {
+  const words = str.split(/[-_]/);
+  const firstWord = words[0];
+  const restWords = words.slice(1);
+
+  const camelCaseRest = restWords.map((word) => {
+    const firstLetter = word.charAt(0).toUpperCase();
+    const restLetters = word.slice(1).toLowerCase();
+    return firstLetter + restLetters;
+  });
+
+  return console.log([firstWord, ...camelCaseRest].join(""));
+}
+
+toCamelCase("java_script"); // => javaScript
+toCamelCase("java-script"); // => javaScript
+toCamelCase("Java-Script"); // => JavaScript
+toCamelCase("asp_Net_Core"); // => aspNetCore
+console.log('-------------------------')
+
 
 // Zadanie 13.
 const idUsers = {
