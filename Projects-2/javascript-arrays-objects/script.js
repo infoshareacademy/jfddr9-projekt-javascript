@@ -109,6 +109,16 @@ const people = [
   "Blake, William",
 ];
 
+function sorter(array) {
+  array.sort((a, b) => {
+    let lastNameA = a.split(",")[0];
+    let lastNameB = b.split(",")[0];
+    return lastNameA.localeCompare(lastNameB);
+  })
+}
+console.log(people);
+console.log('-------------------------')
+
 // Zadanie 6.
 const numbers = [
   11, -10, 50, 5, -8, 9, 20, 21, -4, 11, -5, -12, 100, 20, 14, 8, 19, 44, -21,
