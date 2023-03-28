@@ -299,7 +299,13 @@ console.log('-------------------------')
 
 // Zadanie 8.
 
+people.forEach(person => {
+  console.log(`${person.title} ${person.first_name} ${person.last_name} work as ${person.job_title} in ${person.company}`)
+});
+console.log('-------------------------')
+
 // Zadanie 9.
+
 
 // Zadanie 10.
 
