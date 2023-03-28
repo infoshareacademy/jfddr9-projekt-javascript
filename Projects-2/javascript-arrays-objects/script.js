@@ -51,6 +51,17 @@ console.log('-------------------------')
 
 // Zadanie 4.
 
+function stringLength(array) {
+  let lenghtsArray = []
+  for (let i = 0; i < array.length; i++) {
+    lenghtsArray.push(array[i].length)
+  }
+  return lenghtsArray
+}
+
+console.log(stringLength(["hello", "world", "dog", "sophisticated"]))
+console.log('-------------------------')
+
 
 
 // Zadanie 5.
