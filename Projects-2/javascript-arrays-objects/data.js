@@ -131,6 +131,16 @@ const people = [
     age: 25,
   },
 ];
-function showOnlyUsersWithRace(people, race) {
-  return people.filter((people) => people.race.include("Cambodian"));
-}
+// function showOnlyUsersWithRace() {
+//   let iAmCamboda = people.race;
+//   iAmCamboda === "Cambodian"
+//  console.log(people.race);
+// }
+// showOnlyUsersWithRace()
+
+const showOnlyUsersWithRace = () => {
+for (let i=0; i<people.length; i++)
+  if(people[i].race === "Cambodian"){
+  console.log(people[i]);}
+  }
+showOnlyUsersWithRace()
