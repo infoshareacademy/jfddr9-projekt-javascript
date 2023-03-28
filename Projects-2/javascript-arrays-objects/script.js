@@ -129,26 +129,37 @@ const numbers = [
 let greaterThan20 = numbers.filter(number => number >= 20);
 console.log(`Elementy większe lub równe od 20: ${greaterThan20}`)
 
-let sum = 0;
-for (let i = 0; i < numbers.length; i++) {
-  sum += numbers[i];
-}
+// let sum = 0;
+// for (let i = 0; i < numbers.length; i++) {
+//   sum += numbers[i];
+// }
+// console.log(`Suma elementów w tablicy to ${sum}`)
+let sum = numbers.reduce((acc, currentValue) => acc + currentValue)
 console.log(`Suma elementów w tablicy to ${sum}`)
 
-let negativeSum = 0;
-for (let i = 0; i < numbers.length; i++) {
-  if (numbers[i] < 0) {
-    negativeSum += numbers[i];
-  }
-}
+
+// let negativeSum = 0;
+// for (let i = 0; i < numbers.length; i++) {
+//   if (numbers[i] < 0) {
+//     negativeSum += numbers[i];
+//   }
+// }
+let negativeSum = numbers.filter(number => number < 0).reduce((acc, currentValue) => acc + currentValue)
 console.log(`Suma elementów ujemnych w tablicy to ${negativeSum}`)
 
-let evenIndexsum = 0;
-for (let i = 0; i < numbers.length; i++) {
-  if (i % 2 === 0) {
-    evenIndexsum += numbers[i];
+// let evenIndexsum = 0;
+// for (let i = 0; i < numbers.length; i++) {
+//   if (i % 2 === 0) {
+//     evenIndexsum += numbers[i];
+//   }
+// }
+let evenIndexsum = numbers.reduce((acc, currentValue, index) => {
+  if (index % 2 === 0) {
+    return acc + currentValue;
+  } else {
+    return acc;
   }
-}
+}, 0);
 console.log(`Suma elementów parzystych w tablicy to ${evenIndexsum}`)
 console.log('-------------------------')
 
