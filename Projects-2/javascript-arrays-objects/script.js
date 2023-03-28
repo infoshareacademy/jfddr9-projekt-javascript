@@ -125,6 +125,32 @@ const numbers = [
   -53, 17, -21,
 ];
 
+let greaterThan20 = numbers.filter(number => number >= 20);
+console.log(`Elementy większe lub równe od 20: ${greaterThan20}`)
+
+let sum = 0;
+for (let i = 0; i < numbers.length; i++) {
+  sum += numbers[i];
+}
+console.log(`Suma elementów w tablicy to ${sum}`)
+
+let negativeSum = 0;
+for (let i = 0; i < numbers.length; i++) {
+  if (numbers[i] < 0) {
+    negativeSum += numbers[i];
+  }
+}
+console.log(`Suma elementów ujemnych w tablicy to ${negativeSum}`)
+
+let evenIndexsum = 0;
+for (let i = 0; i < numbers.length; i++) {
+  if (i % 2 === 0) {
+    evenIndexsum += numbers[i];
+  }
+}
+console.log(`Suma elementów parzystych w tablicy to ${evenIndexsum}`)
+console.log('-------------------------')
+
 // Zadanie 7.
 
 // Zadanie 8.
