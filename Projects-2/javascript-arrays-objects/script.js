@@ -111,13 +111,13 @@ const people1 = [
 ];
 
 function sorter(array) {
-  array.sort((a, b) => {
+  return array.sort((a, b) => {
     let lastNameA = a.split(",")[0];
     let lastNameB = b.split(",")[0];
     return lastNameA.localeCompare(lastNameB);
   })
 }
-console.log(people1);
+console.log(sorter(people1));
 console.log('-------------------------')
 
 // Zadanie 6.
@@ -176,13 +176,13 @@ console.log('-------------------------')
 
 // Zadanie 9.
 people.forEach(person => {
-  person.height = person.age + 100;
-  person.weight = person.age + 10;
-  person.bmi = (person.weight / Math.pow(person.height / 100, 2)).toFixed(1);
+  person.height = person.age + 100; //ustalenie wysokości osoby
+  person.weight = person.age + 10; // ustalenie wagi osoby
+  person.bmi = (person.weight / Math.pow(person.height / 100, 2)).toFixed(1);  // ustalenie i obliczenie bmi osoby 
 });
 
 function usersWithNormalBMI() {
-  const filteredUsers = people.filter((person) => person.bmi >= 18.5 && person.bmi <= 24.99)
+  const filteredUsers = people.filter((person) => person.bmi >= 18.5 && person.bmi <= 24.99) // filtrowanie użytkowników którzy mają BMI pomiędzy 18.5 i 24.99
   return filteredUsers
 }
 console.log(people)
