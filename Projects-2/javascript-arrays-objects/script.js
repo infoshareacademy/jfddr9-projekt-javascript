@@ -228,6 +228,23 @@ const requirements = {
   minTasksDone: 100,
 };
 
+function checkJuniorReq(students, requirements) {
+
+  const goodStudents = students.filter(student => student.tasksDone >= requirements.minTasksDone && student.hoursSpent >= requirements.minHoursSpent);
+  const badStudents = students.filter(student => student.tasksDone <= requirements.minTasksDone || student.hoursSpent <= requirements.minHoursSpent);
+
+  const goodStudentsNames = goodStudents.map(student => student.name);
+  const badStudentsNames = badStudents.map(student => student.name);
+
+  const goodStudentsMessage = goodStudents.length > 0 ? `${goodStudentsNames.join(", ")} - gratulacje! Ciężka praca popłaca!` : "";
+
+  const badStudentsMessage = badStudents.length > 0 ? `${badStudentsNames.join(", ")} - - DO ROBOTY LENIE!` : "";
+
+  return console.log(goodStudentsMessage + badStudentsMessage)
+}
+
+checkJuniorReq(students, requirements)
+
 // Zadanie 12.
 
 // Zadanie 13.
