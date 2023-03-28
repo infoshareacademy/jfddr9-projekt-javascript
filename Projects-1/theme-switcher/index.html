@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Theme switcher</title>
 
-    <link rel="stylesheet" href="styles.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Theme switcher</title>
 
-  <body>
-    <main>
-      <div class="container">
-        <button class="btn btnDark">Dark mode</button>
-        <button class="btn btnLight">Light mode</button>
-      </div>
-    </main>
-    <script src="switcher.js"></script>
-  </body>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<style>
+  .invert {
+    background-color: black;
+    filter: invert(1);
+  }
+
+</style>
+
+<body class="invert">
+  <main>
+    <div class="container">
+      <button class="btn btnDark">Dark mode</button>
+      <button class="btn btnLight">Light mode</button>
+    </div>
+  </main>
+  <script src="switcher.js"></script>
+</body>
+
 </html>
