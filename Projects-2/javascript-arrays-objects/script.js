@@ -6,6 +6,7 @@ const ticktacktoe = [
 ];
 
 console.log(ticktacktoe[2][1]);
+console.log('-------------------------')
 
 // Zadanie 2.
 
@@ -17,12 +18,40 @@ function multiplBy2(array) {
   return multipliedArray
 }
 
-console.log(multiplBy2([2, 5, 10]))
+console.log(multiplBy2([2, 5, 10]));
+console.log(multiplBy2([17, 12345, 3]));
+
+console.log('-------------------------')
 
 
 // Zadanie 3.
 
+function check(array) {
+  switch (array.length) {
+    case 1:
+      console.log("#green");
+      break;
+    case 2:
+      console.log("#red");
+      break;
+    case 3:
+      console.log("#blue");
+      break;
+    default:
+      console.log("#black");
+      break;
+  }
+}
+
+check([2]);
+check([2, 3]);
+check([2, 3, 4]);
+check([2, 3, 4, 5]);
+console.log('-------------------------')
+
 // Zadanie 4.
+
+
 
 // Zadanie 5.
 const people = [
