@@ -202,6 +202,17 @@ console.log('-------------------------')
 
 // Zadanie 10.
 
+function daysUntilChristmas() {
+  const today = new Date(); // bieżąca data 
+  let christmasDay = new Date(today.getFullYear(), 11, 25) // data świąt 
+  if (today.getMonth() === 11 && today.getDay > 25) {
+    christmasDay.setFullYear(christmasDay.getFullYear() + 1) // jeśli jest grudzień i po świętach to dodajemy 1 rok
+  }
+  const diffInTime = christmasDay.getTime() - today.getTime() // różnica w czasie między datami, różnica jest w milisekundach
+  const diffInDays = Math.round(diffInTime / (1000 * 3600 * 24)); // różnica w dniach
+  return console.log(`${diffInDays} days left until Christmas!`)
+}
+daysUntilChristmas();
 
 // Zadanie 11.
 const students = [
