@@ -213,6 +213,7 @@ function daysUntilChristmas() {
   return console.log(`${diffInDays} days left until Christmas!`)
 }
 daysUntilChristmas();
+console.log('-------------------------')
 
 // Zadanie 11.
 const students = [
