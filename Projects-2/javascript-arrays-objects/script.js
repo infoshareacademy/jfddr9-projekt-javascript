@@ -5,9 +5,20 @@ const ticktacktoe = [
   ["o", "**", "o"],
 ];
 
-console.log("Wynik")
+console.log(ticktacktoe[2][1]);
 
 // Zadanie 2.
+
+function multiplBy2(array) {
+  let multipliedArray = []
+  for (let i = 0; i < array.length; i++) {
+    multipliedArray.push(array[i] * 2)
+  }
+  return multipliedArray
+}
+
+console.log(multiplBy2([2, 5, 10]))
+
 
 // Zadanie 3.
 
