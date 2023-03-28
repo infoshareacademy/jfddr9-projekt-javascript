@@ -178,18 +178,19 @@ console.log('-------------------------')
 people.forEach(person => {
   person.height = person.age + 100;
   person.weight = person.age + 10;
-  person.bmi = person.weight / (person.height / 100) ^ 2;
+  person.bmi = (person.weight / Math.pow(person.height / 100, 2)).toFixed(1);
 });
 
 function usersWithNormalBMI() {
   const filteredUsers = people.filter((person) => person.bmi >= 18.5 && person.bmi <= 24.99)
   return filteredUsers
 }
-
+console.log(people)
 console.log(usersWithNormalBMI())
 console.log('-------------------------')
 
 // Zadanie 10.
+
 
 // Zadanie 11.
 const students = [
