@@ -194,9 +194,9 @@ people.forEach(person => {
 
 function usersWithNormalBMI() {
   const filteredUsers = people.filter((person) => person.bmi >= 18.5 && person.bmi <= 24.99) // filtrowanie użytkowników którzy mają BMI pomiędzy 18.5 i 24.99
-  return filteredUsers
+  const namesArray = filteredUsers.map(person => person.first_name)
+  return namesArray
 }
-console.log(people)
 console.log(usersWithNormalBMI())
 console.log('-------------------------')
 
