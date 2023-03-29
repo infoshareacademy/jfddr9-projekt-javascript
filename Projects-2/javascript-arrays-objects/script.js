@@ -386,6 +386,28 @@ const checkJuniorReq = (students, requirements) => {
 checkJuniorReq(students, requirements)
 // Zadanie 12.
 
+const toCamelCase = (item) => {
+  const replaceItem = item.replace(/(-)|(_)/g, ' ');
+  const arrString = replaceItem.split(' ');
+  const createNewItem = () => {
+    for (let i=1; i < arrString.length; i++) {
+    arrString[i] = arrString[i].charAt(0).toUpperCase() + arrString[i].slice(1)
+  }
+  let newString = arrString.join (' ')
+  let mergedStrings = newString.replaceAll(' ', '')
+  return mergedStrings
+  }
+  const result = createNewItem(arrString)
+  return result
+}
+
+console.log(toCamelCase("java_script")); // => javaScript
+console.log(toCamelCase("java-script")); // => javaScript
+console.log(toCamelCase("Java-Script")); // => JavaScript
+console.log(toCamelCase("asp_Net_Core")); // => aspNetCore
+
+
+
 // Zadanie 13.
 const idUsers = {
   243: {
