@@ -1,3 +1,4 @@
+import { people } from "./data.js";
 // Zadanie 1.
 const ticktacktoe = [
   ["x", "o", "x"],
@@ -5,16 +6,67 @@ const ticktacktoe = [
   ["o", "**", "o"],
 ];
 
-console.log("Wynik")
+console.log(ticktacktoe[2][1]);
+console.log('-------------------------')
 
 // Zadanie 2.
 
+function multiplBy2(array) {
+  let multipliedArray = []
+  for (let i = 0; i < array.length; i++) {
+    multipliedArray.push(array[i] * 2)
+  }
+  return multipliedArray
+}
+
+console.log(multiplBy2([2, 5, 10]));
+console.log(multiplBy2([17, 12345, 3]));
+
+console.log('-------------------------')
+
+
 // Zadanie 3.
+
+function check(array) {
+  switch (array.length) {
+    case 1:
+      console.log("#green");
+      break;
+    case 2:
+      console.log("#red");
+      break;
+    case 3:
+      console.log("#blue");
+      break;
+    default:
+      console.log("#black");
+      break;
+  }
+}
+
+check([2]);
+check([2, 3]);
+check([2, 3, 4]);
+check([2, 3, 4, 5]);
+console.log('-------------------------')
 
 // Zadanie 4.
 
+function stringLength(array) {
+  let lenghtsArray = []
+  for (let i = 0; i < array.length; i++) {
+    lenghtsArray.push(array[i].length)
+  }
+  return lenghtsArray
+}
+
+console.log(stringLength(["hello", "world", "dog", "sophisticated"]))
+console.log('-------------------------')
+
+
+
 // Zadanie 5.
-const people = [
+const people1 = [
   "Beck, Glenn",
   "Becker, Carl",
   "Beckett, Samuel",
@@ -58,19 +110,110 @@ const people = [
   "Blake, William",
 ];
 
+function sorter(array) {
+  return array.sort((a, b) => {
+    let lastNameA = a.split(",")[0];
+    let lastNameB = b.split(",")[0];
+    return lastNameA.localeCompare(lastNameB);
+  })
+}
+console.log(sorter(people1));
+console.log('-------------------------')
+
 // Zadanie 6.
 const numbers = [
   11, -10, 50, 5, -8, 9, 20, 21, -4, 11, -5, -12, 100, 20, 14, 8, 19, 44, -21,
   -53, 17, -21,
 ];
 
+let greaterThan20 = numbers.filter(number => number >= 20);
+console.log(`Elementy większe lub równe od 20: ${greaterThan20}`)
+
+// let sum = 0;
+// for (let i = 0; i < numbers.length; i++) {
+//   sum += numbers[i];
+// }
+// console.log(`Suma elementów w tablicy to ${sum}`)
+let sum = numbers.reduce((acc, currentValue) => acc + currentValue)
+console.log(`Suma elementów w tablicy to ${sum}`)
+
+
+// let negativeSum = 0;
+// for (let i = 0; i < numbers.length; i++) {
+//   if (numbers[i] < 0) {
+//     negativeSum += numbers[i];
+//   }
+// }
+let negativeSum = numbers.filter(number => number < 0).reduce((acc, currentValue) => acc + currentValue)
+console.log(`Suma elementów ujemnych w tablicy to ${negativeSum}`)
+
+// let evenIndexsum = 0;
+// for (let i = 0; i < numbers.length; i++) {
+//   if (i % 2 === 0) {
+//     evenIndexsum += numbers[i];
+//   }
+// }
+let evenIndexsum = numbers.reduce((acc, currentValue, index) => {
+  if (index % 2 === 0) {
+    return acc + currentValue;
+  } else {
+    return acc;
+  }
+}, 0);
+console.log(`Suma elementów parzystych w tablicy to ${evenIndexsum}`)
+console.log('-------------------------')
+
 // Zadanie 7.
+
+function showOnlyUsersWithRace(race) {
+  if (typeof race === "string") { //sprawdzenie czy race jest stringiem lub liczbą
+    const filteredUsers = people.filter((person) => person.race === race); //filtrowanie użytkowników z danej rasy
+    return filteredUsers.length > 0 ? filteredUsers : []; //jeśli wynikowy array jest pusty to zwracamy [], w przeciwnym razie zwracamy wynikowe obiekty
+  } else {
+    return "This race doesn't exist"; //jeśli wartość race nie jest ani stringiem, zwracamy "This race doesn't exist"
+  }
+}
+console.log(showOnlyUsersWithRace("Cambodian"));
+console.log(showOnlyUsersWithRace(1));
+console.log(showOnlyUsersWithRace("Polish"));
+console.log('-------------------------')
 
 // Zadanie 8.
 
+people.forEach(person => {
+  console.log(`${person.title} ${person.first_name} ${person.last_name} work as ${person.job_title} in ${person.company}`)
+});
+console.log('-------------------------')
+
 // Zadanie 9.
+people.forEach(person => {
+  person.height = person.age + 100; //ustalenie wysokości osoby
+  person.weight = person.age + 10; // ustalenie wagi osoby
+  person.bmi = (person.weight / Math.pow(person.height / 100, 2)).toFixed(1);  // ustalenie i obliczenie bmi osoby 
+});
+
+function usersWithNormalBMI() {
+  const filteredUsers = people.filter((person) => person.bmi >= 18.5 && person.bmi <= 24.99) // filtrowanie użytkowników którzy mają BMI pomiędzy 18.5 i 24.99
+  const namesArray = filteredUsers.map(person => person.first_name)
+  return namesArray
+}
+console.log(usersWithNormalBMI())
+console.log('-------------------------')
 
 // Zadanie 10.
+
+function daysUntilChristmas() {
+  const today = new Date(); // bieżąca data 
+  let christmasDay = new Date(today.getFullYear(), 11, 25) // data świąt 
+  if (today.getMonth() === 11 && today.getDay > 25) {
+    christmasDay.setFullYear(christmasDay.getFullYear() + 1) // jeśli jest grudzień i po świętach to dodajemy 1 rok
+  }
+  const diffInTime = christmasDay.getTime() - today.getTime() // różnica w czasie między datami, różnica jest w milisekundach
+  const diffInDays = Math.round(diffInTime / (1000 * 3600 * 24)); // różnica w dniach
+  return console.log(`${diffInDays} days left until Christmas!`)
+}
+daysUntilChristmas();
+console.log('-------------------------')
 
 // Zadanie 11.
 const students = [
@@ -86,7 +229,46 @@ const requirements = {
   minTasksDone: 100,
 };
 
+function checkJuniorReq(students, requirements) {
+
+  const goodStudents = students.filter(student => student.tasksDone >= requirements.minTasksDone && student.hoursSpent >= requirements.minHoursSpent);
+  const badStudents = students.filter(student => student.tasksDone <= requirements.minTasksDone || student.hoursSpent <= requirements.minHoursSpent);
+
+  const goodStudentsNames = goodStudents.map(student => student.name);
+  const badStudentsNames = badStudents.map(student => student.name);
+
+  const goodStudentsMessage = goodStudents.length > 0 ? `${goodStudentsNames.join(", ")} - gratulacje! Ciężka praca popłaca!` : "";
+
+  const badStudentsMessage = badStudents.length > 0 ? `${badStudentsNames.join(", ")} - - DO ROBOTY LENIE!` : "";
+
+  return console.log(goodStudentsMessage + badStudentsMessage)
+}
+
+checkJuniorReq(students, requirements)
+console.log('-------------------------')
+
 // Zadanie 12.
+
+function toCamelCase(str) {
+  const words = str.split(/[-_]/);
+  const firstWord = words[0];
+  const restWords = words.slice(1);
+
+  const camelCaseRest = restWords.map((word) => {
+    const firstLetter = word.charAt(0).toUpperCase();
+    const restLetters = word.slice(1).toLowerCase();
+    return firstLetter + restLetters;
+  });
+
+  return console.log([firstWord, ...camelCaseRest].join(""));
+}
+
+toCamelCase("java_script"); // => javaScript
+toCamelCase("java-script"); // => javaScript
+toCamelCase("Java-Script"); // => JavaScript
+toCamelCase("asp_Net_Core"); // => aspNetCore
+console.log('-------------------------')
+
 
 // Zadanie 13.
 const idUsers = {
