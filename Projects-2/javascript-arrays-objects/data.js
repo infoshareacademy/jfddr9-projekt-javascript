@@ -131,16 +131,60 @@ const people = [
     age: 25,
   },
 ];
-// function showOnlyUsersWithRace() {
-//   let iAmCamboda = people.race;
-//   iAmCamboda === "Cambodian"
-//  console.log(people.race);
-// }
-// showOnlyUsersWithRace()
 
-const showOnlyUsersWithRace = () => {
-for (let i=0; i<people.length; i++)
-  if(people[i].race === "Cambodian"){
-  console.log(people[i]);}
+// ZADANIE 7 //
+let i = 0;
+let citizenship = people[i].race;
+const showOnlyUsersWithRace = (citizenship) => {
+  const filtered = people.filter((person) => person.race === citizenship);
+  return filtered;
+};
+const result = showOnlyUsersWithRace("Cambodian");
+console.log(result);
+
+///////////////rozwiązanie z chatuGPT//////////////////
+
+// let propertyName = "race";
+// let value = "Cambodian"
+
+// function getSomData(people, propertyName, value){
+//   return people.filter(function(obj){
+//     return obj[propertyName] === value
+//   })
+// }
+
+// const getObject = getSomData(people, propertyName, value);
+// console.log(getObject);
+
+// ZADANIE 8 //
+
+const humans = () => {
+  for (x = 0; x < people.length; x++) {
+    const titLe = people[x].title;
+    const firstName = people[x].first_name;
+    const lastName = people[x].last_name;
+    const jobTitle = people[x].job_title;
+    const compAny = people[x].company;
+    console.log(
+      `${titLe} ${firstName} ${lastName} works as ${jobTitle} in ${compAny}`
+    );
   }
-showOnlyUsersWithRace()
+};
+humans();
+
+// ZADANIE 9 //
+const slimPeople = [];
+const bmi = () => {
+  for (y = 0; y < people.length; y++) {
+    let height = (people[y].age + 100) * 0.01;
+    height = Math.pow(height, 2);
+    let weight = people[y].age + 10;
+    let fattyFat = weight / height;
+    let result = people[y].first_name;
+    if (fattyFat >= 18.5 && fattyFat <= 24.99) {
+      slimPeople.push(result);
+    }
+  }
+};
+bmi();
+console.log(slimPeople);
