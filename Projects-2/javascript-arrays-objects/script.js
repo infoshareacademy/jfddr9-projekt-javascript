@@ -108,17 +108,15 @@ console.log(`Suma elementów ujemnych: ${sumaUjemnaX}`);
 
 let odd = [];
 let even = [];
-function splitNumbers (numbers){
- 
-  for (let i=0; i < numbers.length; i++)
-      (i % 2==0 ? even : odd).push(numbers[i]);
-  console.log(even)
+function splitNumbers(numbers) {
+  for (let i = 0; i < numbers.length; i++)
+    (i % 2 == 0 ? even : odd).push(numbers[i]);
+  console.log(even);
 }
-splitNumbers(numbers)
+splitNumbers(numbers);
 
 let sumaParz = even.reduce((acc, currentValue) => acc + currentValue);
 console.log(`Suma indeksów parzystych: ${sumaParz}`);
-
 
 // Zadanie 7.
 
@@ -127,6 +125,30 @@ console.log(`Suma indeksów parzystych: ${sumaParz}`);
 // Zadanie 9.
 
 // Zadanie 10.
+
+const today = new Date();
+const days = today.getDate();
+const months = today.getMonth();
+console.log(months);
+let arrayMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+let alreadyKnown = [];
+let notKnownYet = [];
+
+// Ile dni które już znamy //
+
+for (let b = 0; b < arrayMonth.length; b++)
+  (b < months ? alreadyKnown : notKnownYet).push(arrayMonth[b]);
+let sumeMe = alreadyKnown.reduce((acc, currentValue) => acc + currentValue);
+let sumaOnceAgain = arrayMonth.reduce(
+  (acc, currentValue) => acc + currentValue
+); //suma dni we wszystkich miesiącach
+
+// Różca dni które już zamy - dni których jeszcze nie znamy //
+function daysUntilChristmas() {
+  let leftDays = sumaOnceAgain - sumeMe;
+  console.log(`${leftDays} days left until Christmas`);
+}
+daysUntilChristmas();
 
 // Zadanie 11.
 const students = [
@@ -141,6 +163,28 @@ const requirements = {
   minHoursSpent: 80,
   minTasksDone: 100,
 };
+
+function checkJuniorReq() {
+  let goodPeople = [];
+  let badPeople = [];
+  for (let s = 0; s < students.length; s++) {
+    let studentsName = students[s].name;
+    let tasksCompleted = students[s].tasksDone;
+    let spendHours = students[s].hoursSpent;
+    if (
+      tasksCompleted >= requirements.minTasksDone &&
+      spendHours >= requirements.minHoursSpent
+    ) {
+      goodPeople.push(studentsName);
+    } else {
+      badPeople.push(studentsName);
+    }
+  }
+  console.log(
+    `${goodPeople } - gratulacje! Ciężka praca popłaca! ${badPeople} - DO ROBOTY LENIE! `
+  );
+}
+checkJuniorReq();
 
 // Zadanie 12.
 
