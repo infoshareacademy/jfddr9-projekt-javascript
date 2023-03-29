@@ -1,6 +1,8 @@
 // Dane dla zadań 7-9
 
-const people = [
+
+
+const peopleData = [
   {
     id: 1,
     first_name: "Kaylil",
