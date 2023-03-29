@@ -131,3 +131,4 @@ const people = [
     age: 25,
   },
 ];
+export {people}
