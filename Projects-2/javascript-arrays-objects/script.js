@@ -307,10 +307,9 @@ showPeopleWhoWorks(people)
 
 // Zadanie 9.
 
-//problemy
 
-const newPeople = () => {
- people.forEach((item) => {
+const newPeople = (arr) => {
+ arr.forEach((item) => {
     item.height = item.age + 100;
     item.weight = item.age + 10;
     item.bmi = (item.weight / Math.pow(item.height/100, 2)).toFixed(2);
@@ -318,19 +317,21 @@ const newPeople = () => {
   })
 }
 
-newPeople();
+newPeople(people);
+console.log(people);
+let arrWithNameOfGoodBmi = [];
 
-const findPeoplewithWantedBMI = () => {
-  const peoplewithWantedBMI = people.filter((item) => {
-    item.bmi >= 18.5 && item.bmi <= 24.99
-  })
-  return peoplewithWantedBMI
-}
 
-console.log(people)
-findPeoplewithWantedBMI()
-console.log(findPeoplewithWantedBMI())
+ const createNewArrWithName = (arr) =>{ 
+  arr.forEach( item => {
+  if(item.bmi <= 24.99 && item.bmi >= 18.5) {  
+    arrWithNameOfGoodBmi.push(item.first_name);
+  }
+})
+ }
 
+ createNewArrWithName(people)
+ console.log(arrWithNameOfGoodBmi)
 
 
 // Zadanie 10. - wykonane z pomocą internetu
