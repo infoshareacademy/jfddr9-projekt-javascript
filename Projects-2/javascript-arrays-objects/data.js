@@ -142,19 +142,6 @@ const showOnlyUsersWithRace = (citizenship) => {
 const result = showOnlyUsersWithRace("Cambodian");
 console.log(result);
 
-///////////////rozwiązanie z chatuGPT//////////////////
-
-// let propertyName = "race";
-// let value = "Cambodian"
-
-// function getSomData(people, propertyName, value){
-//   return people.filter(function(obj){
-//     return obj[propertyName] === value
-//   })
-// }
-
-// const getObject = getSomData(people, propertyName, value);
-// console.log(getObject);
 
 // ZADANIE 8 //
 

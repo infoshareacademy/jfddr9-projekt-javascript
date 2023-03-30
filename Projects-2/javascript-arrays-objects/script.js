@@ -43,6 +43,7 @@ for (let i = 0; i < theOffice.length; i++) {
   theOffice[i] = theOffice[i].length;
 }
 console.log(theOffice);
+
 // Zadanie 5.
 
 const people = [
@@ -181,12 +182,35 @@ function checkJuniorReq() {
     }
   }
   console.log(
-    `${goodPeople } - gratulacje! Ciężka praca popłaca! ${badPeople} - DO ROBOTY LENIE! `
+    `${goodPeople} - gratulacje! Ciężka praca popłaca! ${badPeople} - DO ROBOTY LENIE! `
   );
 }
 checkJuniorReq();
 
 // Zadanie 12.
+
+function toCamelCase(wordsDontComeEasy) {
+  const regex = /[-_]/gm; //wymiana - i _ na spacje
+  wordsDontComeEasy = wordsDontComeEasy.replace(regex, " ");
+  // console.log(wordsDontComeEasy)  // zwrócenie słów w tablicy
+  let split = wordsDontComeEasy.split(" ");
+  // console.log(split);
+  split = split.map((item, index) => {
+    if (index !== 0) {
+      return item.charAt(0).toUpperCase() + item.slice(1);
+    }else if (index === 0 && item.charAt(0) === item.charAt(0).toUpperCase()){
+      return item;
+    }else{
+      return item;
+    }
+  });
+  console.log(split.join(""));
+}
+toCamelCase("Jak-sobota_to-tylko_do-lidla");
+toCamelCase("i-ujrzałem_naród-co_bez-celu_się-błąka");
+toCamelCase("zamknięty-Lidl-zamknięta.Biedronka");
+
+// console.log("test");
 
 // Zadanie 13.
 const idUsers = {
