@@ -124,9 +124,8 @@ function firstNameValidation() {
 //   if (lastNameLength < MIN_LAST_NAME_LENGTH) {
 //     showLastNameErrorMessage("Minimalna liczba znaków to 3");
 //   }
-
-//   //błąd, za dużo znaków
-//   if (lastNameLength > MAX_LAST_NAME_LENGTH) {
-//     showLastNameErrorMessage("Maksymalna liczba znaków to 15");
+//   //błąd, za mało znaków
+//   if (lastNameLength < MIN_LAST_NAME_LENGTH) {
+//     showLastNameErrorMessage("Minimalna liczba znaków to 3");
 //   }
-// }
+
