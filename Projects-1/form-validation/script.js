@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const firstNameInput = document.querySelector("#validationCustom01")
 firstNameInput.addEventListener("change", firstNameValidation)
 
@@ -43,11 +42,9 @@ function firstNameValidation() {
         showFirstNameErrorMessage("Błędne znaki w imieniu")
     }
 }
-=======
 //FIRST NAME VALIDATION
 
 const firstNameInput = document.querySelector("#validationCustom01");
->>>>>>> project-2/KatarzynaBrejna
 
 firstNameInput.addEventListener("change", firstNameValidation);
 
