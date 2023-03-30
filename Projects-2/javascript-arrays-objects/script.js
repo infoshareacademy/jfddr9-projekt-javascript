@@ -13,14 +13,6 @@ for (let i = 0; i < coolArray.length; i++) {
 }
 console.log(coolArray);
 
-// const coolArray = [1, 1, 2, 3, 5, 8, 13, 21, 34];
-// const  multiplyBy2 = () => {
-//   for (let i = 0; i < coolArray.length; i++){
-//   coolArray[i]=coolArray[i]*2;
-//   console.log(coolArray)
-// }}
-// multiplyBy2()
-
 // Zadanie 3.
 const check = ticktacktoe.length;
 switch (check) {
@@ -198,9 +190,9 @@ function toCamelCase(wordsDontComeEasy) {
   split = split.map((item, index) => {
     if (index !== 0) {
       return item.charAt(0).toUpperCase() + item.slice(1);
-    }else if (index === 0 && item.charAt(0) === item.charAt(0).toUpperCase()){
+    } else if (index === 0 && item.charAt(0) === item.charAt(0).toUpperCase()) {
       return item;
-    }else{
+    } else {
       return item;
     }
   });
@@ -275,3 +267,11 @@ const idUsers = {
     jobTitle: "GIS Technical Architect",
   },
 };
+console.log("test")
+function correctData(idUsers) {
+  const fancyArray = [];
+// pętla for?
+
+  console.log (fancyArray);
+}
+correctData(idUsers);
