@@ -138,6 +138,13 @@ input {
 
 .forecast {
     margin-top: 5rem;
+    width: 100vw;
+}
+
+.forecast .population {
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 .forecast .row {
     display:flex;
