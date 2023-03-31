@@ -5,17 +5,48 @@ const ticktacktoe = [
   ["o", "**", "o"],
 ];
 
-console.log("Wynik")
+const elementOfTicktacktoe = ticktacktoe[2][1];
+
+console.log(elementOfTicktacktoe);
 
 // Zadanie 2.
 
+const array = [1, 8, 32, 48];
+
+const multiplyBy2 = array.map((x) => x * 2);
+
+console.log(multiplyBy2);
+
 // Zadanie 3.
+
+const array1 = [1, 2];
+const array2 = [1];
+const array3 = [1, 2, 3, 4];
+const array4 = [1, 2, 3];
+
+function check(array) {
+  switch (array.length) {
+    case 1:
+      return "#green";
+      break;
+    case 2:
+      return "#red";
+      break;
+    case 3:
+      return "#blue";
+      break;
+    default:
+      return "#black";
+  }
+}
 
 // Zadanie 4.
 
+// stringLength(["hello", "world", "dog", "sophisticated"])
+
 // Zadanie 5.
-const people = [
-  "Beck, Glenn",
+//const people = [
+"Beck, Glenn",
   "Becker, Carl",
   "Beckett, Samuel",
   "Beddoes, Mick",
@@ -56,15 +87,199 @@ const people = [
   "Blair, Robert",
   "Blair, Tony",
   "Blake, William",
-];
+  //];
 
-// Zadanie 6.
-const numbers = [
-  11, -10, 50, 5, -8, 9, 20, 21, -4, 11, -5, -12, 100, 20, 14, 8, 19, 44, -21,
-  -53, 17, -21,
-];
+  //const newArray = people.map((person) => person.split(",")[0]).sort();
+  //console.log(newArray);
+
+  // Zadanie 6.
+  ////const numbers = [
+  11,
+  -10,
+  50,
+  5,
+  -8,
+  9,
+  20,
+  21,
+  -4,
+  11,
+  -5,
+  -12,
+  100,
+  20,
+  14,
+  8,
+  19,
+  44,
+  -21,
+  -53,
+  17,
+  -21,
+  //];
+
+  //const isBiggerThan20 = numbers.filter((x) => {
+  //return x >= 20;
+  //});
+  console.log(`Elementy większe bądź równe od 20: ${isBiggerThan20}`);
+
+const sumOfNumbers = numbers.reduce((acc, val) => acc + val);
+console.log(`Suma elementów w tablicy: ${sumOfNumbers}`);
+
+const onlyNegativeNumbers = numbers.filter((x) => {
+  return x < 0;
+});
+
+const sumOfNegativeNumbers = onlyNegativeNumbers.reduce(
+  (acc, val) => acc + val
+);
+console.log(`Suma elementów ujemnych to: ${sumOfNegativeNumbers}`);
+
+const onlyEvenIndex = numbers.filter((x) => {
+  return [x] % 2 === 0;
+});
+
+const sumOfNumbersOfEvenIndex = onlyEvenIndex.reduce((acc, val) => acc + val);
+console.log(`Suma elementów parzystych: ${sumOfNumbersOfEvenIndex}`);
 
 // Zadanie 7.
+
+const people = [
+  {
+    id: 1,
+    first_name: "Kaylil",
+    last_name: "Hovey",
+    email: "khovey0@gizmodo.com",
+    gender: "Female",
+    ip_address: "128.158.239.223",
+    title: "Rev",
+    job_title: "Recruiting Manager",
+    race: "Vietnamese",
+    company: "Browseblab",
+    age: 33,
+  },
+  {
+    id: 2,
+    first_name: "Cesare",
+    last_name: "Caroline",
+    email: "ccaroline1@tmall.com",
+    gender: "Male",
+    ip_address: "7.78.224.248",
+    title: "Rev",
+    job_title: "Computer Systems Analyst II",
+    race: "Black or African American",
+    company: "Wordtune",
+    age: 50,
+  },
+  {
+    id: 3,
+    first_name: "Xaviera",
+    last_name: "Danilchenko",
+    email: "xdanilchenko2@so-net.ne.jp",
+    gender: "Female",
+    ip_address: "161.223.97.94",
+    title: "Mr",
+    job_title: "Statistician IV",
+    race: "Asian",
+    company: "Rhynyx",
+    age: 55,
+  },
+  {
+    id: 4,
+    first_name: "Shandy",
+    last_name: "Sanford",
+    email: "ssanford3@uiuc.edu",
+    gender: "Female",
+    ip_address: "40.218.230.208",
+    title: "Honorable",
+    job_title: "Data Coordiator",
+    race: "Eskimo",
+    company: "Topdrive",
+    age: 76,
+  },
+  {
+    id: 5,
+    first_name: "Muire",
+    last_name: "Pothecary",
+    email: "mpothecary4@mit.edu",
+    gender: "Female",
+    ip_address: "82.151.63.26",
+    title: "Honorable",
+    job_title: "Executive Secretary",
+    race: "Chickasaw",
+    company: "Realbridge",
+    age: 15,
+  },
+  {
+    id: 6,
+    first_name: "Mano",
+    last_name: "Gwatkins",
+    email: "mgwatkins5@auda.org.au",
+    gender: "Male",
+    ip_address: "134.244.218.162",
+    title: "Ms",
+    race: undefined,
+    job_title: "Automation Special",
+    age: 23,
+  },
+  {
+    id: 7,
+    first_name: "Frederica",
+    last_name: "Shackleton",
+    email: "fshackleton6@examiner.com",
+    gender: "Female",
+    ip_address: "191.141.61.25",
+    title: "Honorable",
+    job_title: "Help Desk Operator",
+    race: "Yuman",
+    company: "Yoveo",
+    age: 89,
+  },
+  {
+    id: 8,
+    first_name: "Garvey",
+    last_name: "Islep",
+    email: "gislep7@nps.gov",
+    gender: "Male",
+    ip_address: "101.45.75.228",
+    title: "Mr",
+    job_title: "Internal Auditor",
+    race: "Cambodian",
+    company: "Livefish",
+    age: 76,
+  },
+  {
+    id: 9,
+    first_name: "Aristotle",
+    last_name: "Gozard",
+    email: "agozard8@exblog.jp",
+    gender: "Male",
+    ip_address: "87.43.196.133",
+    title: "Rev",
+    job_title: "Software Test Engineer IV",
+    race: "Chippewa",
+    company: "Feedspan",
+    age: 34,
+  },
+  {
+    id: 10,
+    first_name: "Bryon",
+    last_name: "Boulder",
+    email: "bboulder9@parallels.com",
+    gender: "Male",
+    ip_address: "251.50.80.89",
+    title: "Honorable",
+    job_title: "Senior Editor",
+    race: "Black or African American",
+    company: "Kazu",
+    age: 25,
+  },
+];
+
+const OnlyUsersWithRace = people.filter((x) => {
+  return x.race != undefined;
+});
+console.log(OnlyUsersWithRace);
 
 // Zadanie 8.
 
