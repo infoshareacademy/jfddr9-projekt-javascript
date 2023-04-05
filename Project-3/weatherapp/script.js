@@ -1,8 +1,11 @@
 const weather = document.querySelector('.weather');
 const searchBtn = document.querySelector('button[role="search"]');
-const cityField = document.querySelector('input[type="search"]');
+const cityField = document.querySelector('input[type="search"]')
 const forecastRow = document.querySelector('.forecast > .row');
 const dateElement = document.querySelector('.header__date');
+const population = document.querySelector('.population');
+
+
 
 const icons = {
   '01d': 'wi-day-sunny',
@@ -53,6 +56,7 @@ function renderForecast(forecast) {
   forecast.forEach((weatherData) => {
     const markup = `<div class="forecast__day">
      <h3 class="forecast__date">${getWeekDay(new Date(weatherData.dt * 1000))}</h3>
+     <h4>${weatherData.dt_txt}</h4>
      <i class='wi ${icons[weatherData.weather[0].icon]} forecast__icon'></i>
      <p class="forecast__temp">${Math.floor(weatherData.main.temp)}°C</p>
      <p class="forecast__desc">${weatherData.weather[0].main}</p>
@@ -76,20 +80,75 @@ function renderWeather(weatherSummary) {
   weather.insertAdjacentHTML('beforeend', markup);
 }
 
-function getForecast(url) {}
+function renderPopulation(forecast) {
+  const markup = `<h1 class="population">${forecast.city.name}, ${forecast.city.country}</h1>
+  <p>${forecast.city.population}</p> `
+  population.insertAdjacentHTML('beforeend', markup);
 
-function getCityWeather(url) {}
+}
+
+function getForecast(url) {
+  fetch(url)
+  .then((response) => response.json())
+  .then((data) => renderForecast(data.list.filter(forecast => forecast.dt_txt.split(" ")[1] == "12:00:00")))
+  .catch(() => () => {
+    setTimeout( () => getForecastByCity(cityField.value), 30000)
+  })
+}
+
+function getCityWeather(url) {
+  fetch(url)
+  .then((response) => response.json())
+  .then((data) => renderWeather(data))
+  .catch(() => {
+    setTimeout( () => getWeatherByCity(cityField.value), 30000)
+  })
+}
+
+function getPopulation(url) {
+  fetch(url)
+  .then((response) => response.json())
+  .then((data) => renderPopulation(data))
+  .catch(() => {
+    setTimeout( () => getPopulationByCity(cityField.value), 30000)
+  })
+}
+
+
+
+
 
 function getWeatherByCity(city) {
-  getCityWeather(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=bfd94ac7b58fd900b09e9d2f37bdda90&units=metric`);
+  getCityWeather(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=bfd94ac7b58fd900b09e9d2f37bdda90
+&units=metric`);
 }
 function getForecastByCity(city) {
-  getForecast(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=bfd94ac7b58fd900b09e9d2f37bdda90&units=metric`);
+  getForecast(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=bfd94ac7b58fd900b09e9d2f37bdda90
+&units=metric`);
 }
 
+function getPopulationByCity(city) {
+  getForecast(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=bfd94ac7b58fd900b09e9d2f37bdda90
+&units=metric`);
+}
+
+
+function getData(city) {
+  getWeatherByCity(city);
+  getForecastByCity(city);
+  getPopulationByCity(city);
+
+}
+
+
+
 printTodayDate();
+
 searchBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  getWeatherByCity(cityField.value);
-  getForecastByCity(cityField.value);
+  searchBtn.disabled = true
+  getData(cityField.value) 
+  setInterval (() => {
+    getData(cityField.value)
+  }, 20000)
 });
