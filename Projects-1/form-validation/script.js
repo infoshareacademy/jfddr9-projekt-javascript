@@ -56,31 +56,31 @@ function firstNameValidation() {
 function lastNameValidation() {
     const lastNameValue = lastNameInput.value;
     const lastNameLength = lastNameValue.length;
-    const validationDiv = document.querySelector("#firstNameValidationMessage");
+    const validationDiv = document.querySelector("#lastNameValidationMessage");
   
     validationDiv.innerHTML = "";
   
     //błąd za mało znaków
-    if (firstNameLength < MIN_FIRST_NAME_LENGTH) {
+    if (lastNameLength < MIN_FIRST_NAME_LENGTH) {
       showNameErrorMessage(
         "Minimalna liczba znakow to 3",
-        "#firstNameValidationMessage"
+        "#lastNameValidationMessage"
       );
     }
   
     //błąd za dużo znaków
-    if (firstNameLength > MAX_FIRST_NAME_LENGTH) {
+    if (lastNameLength > MAX_FIRST_NAME_LENGTH) {
       showNameErrorMessage(
         "Maksymalna liczba znakow to 25",
-        "#firstNameValidationMessage"
+        "#lastNameValidationMessage"
       );
     }
   
     //tylko literki
-    if (!checkIsOnlyLetters(firstNameValue)) {
+    if (!checkIsOnlyLetters(lastNameValue)) {
       showNameErrorMessage(
         "Błędne znaki w imieniu",
-        "#firstNameValidationMessage"
+        "#lastNameValidationMessage"
       );
     }
   }
