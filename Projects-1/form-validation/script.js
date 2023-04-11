@@ -1,9 +1,12 @@
 const firstNameInput = document.querySelector("#validationCustom01");
 const lastNameInput = document.querySelector("#validationCustom02");
 const usernameInput = document.querySelector("#validationCustomUsername");
+const cityInput = document.querySelector("#validationCustom03");
+
 firstNameInput.addEventListener("change", firstNameValidation);
 lastNameInput.addEventListener("change", lastNameValidation);
 usernameInput.addEventListener("change", usernameValidation);
+cityInput.addEventListener("change", cityValidation);
 
 const MIN_NAME_LENGTH = 10;
 const MAX_NAME_LENGTH = 100;
@@ -24,6 +27,7 @@ function checkIsOnlyLetters(text) {
   return text.match(regEx);
 }
 
+//IMIE
 function firstNameValidation() {
   const firstNameValue = firstNameInput.value;
   const firstNameLength = firstNameValue.length;
@@ -56,6 +60,7 @@ function firstNameValidation() {
   }
 }
 
+//NAZWISKO
 function lastNameValidation() {
   const lastNameValue = lastNameInput.value;
   const lastNameLength = lastNameValue.length;
@@ -93,6 +98,7 @@ function checkIsLettersOrNumbers(text) {
   return text.match(regEx);
 }
 
+//NAZWA UŻYTKOWNIKA
 function usernameValidation() {
   const usernameValue = usernameInput.value;
   const usernameLength = usernameValue.length;
@@ -116,6 +122,20 @@ function usernameValidation() {
     showNameErrorMessage(
       "Błędne znaki w nazwie użytkownika",
       "#usernameValidationMessage"
+    );
+  }
+}
+
+//MIASTO
+function cityValidation() {
+  const cityValue = cityInput.value;
+  const validationDiv = document.querySelector("#cityValidationMessage");
+
+
+  if (cityValue != "Bydgoszcz") {
+    showNameErrorMessage(
+      "Niepoprawna nazwa miejscowości",
+      "#cityValidationMessage"
     );
   }
 }
