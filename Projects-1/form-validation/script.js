@@ -2,11 +2,13 @@ const firstNameInput = document.querySelector("#validationCustom01");
 const lastNameInput = document.querySelector("#validationCustom02");
 const usernameInput = document.querySelector("#validationCustomUsername");
 const cityInput = document.querySelector("#validationCustom03");
+const stateInput = document.querySelector("#validationCustom04");
 
 firstNameInput.addEventListener("change", firstNameValidation);
 lastNameInput.addEventListener("change", lastNameValidation);
 usernameInput.addEventListener("change", usernameValidation);
 cityInput.addEventListener("change", cityValidation);
+stateInput.addEventListener("change", stateValidation);
 
 const MIN_NAME_LENGTH = 10;
 const MAX_NAME_LENGTH = 100;
@@ -104,7 +106,7 @@ function usernameValidation() {
   const usernameLength = usernameValue.length;
   const validationDiv = document.querySelector("#usernameValidationMessage");
 
-  // validationDiv = "";
+  validationDiv.innerHTML = "";
 
   if (usernameLength < MIN_USERNAME_LENGTH) {
     showNameErrorMessage(
@@ -131,6 +133,7 @@ function cityValidation() {
   const cityValue = cityInput.value;
   const validationDiv = document.querySelector("#cityValidationMessage");
 
+  validationDiv.innerHTML = "";
 
   if (cityValue != "Bydgoszcz") {
     showNameErrorMessage(
@@ -139,3 +142,22 @@ function cityValidation() {
     );
   }
 }
+
+//WOJEWÓDZTWO
+function stateValidation() {
+  const stateValue = stateInput.value;
+  const validationDiv = document.querySelector("#stateValidationMessage");
+
+  validationDiv.innerHTML = "";
+
+  //co jest nie tak w tym warunku?
+  if (
+    stateValue !== "Kujawsko-pomorskie" ||
+    stateValue !== "kuj-pom" ||
+    stateValue !== "kuj-pomorskie"
+  ) {
+    showNameErrorMessage("Niepoprawna nazwa województwa", "#stateValidationMessage");
+  }
+}
+
+
