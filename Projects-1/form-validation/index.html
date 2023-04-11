@@ -3,17 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- displays site properly based on user's device -->
 
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./images/favicon-32x32.png"
-    />
     <link
       rel="icon"
       type="image/png"
@@ -30,38 +21,7 @@
       button {
         width: 140px;
       }
-      .container {
-        padding: 100px 200px;
-      }
-      button {
-        width: 140px;
-      }
     </style>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    <div class="container">
-      <form class="needs-validation" novalidate>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
@@ -99,7 +59,6 @@
             />
             <div id="firstNameValidationMessage"></div>
           </div>
-          
           <div class="col-md-4 mb-3">
             <label for="validationCustom02">Last name</label>
             <input
@@ -107,9 +66,10 @@
               class="form-control"
               id="validationCustom02"
               placeholder="Last name"
+              value="Otto"
               required
             />
-            <div class="lastNameValidationMessage"></div>
+            <div class="valid-feedback">Looks good!</div>
           </div>
           <div class="col-md-4 mb-3">
             <label for="validationCustomUsername">Username</label>
@@ -162,7 +122,7 @@
               required
             />
             <div class="invalid-feedback">Please provide a valid zip.</div>
-          </div>    
+          </div>
         </div>
         <div class="form-group">
           <div class="form-check">
@@ -184,12 +144,7 @@
         <button class="btn btn-primary" type="submit">Submit form</button>
       </form>
     </div>
-      </form>
-    </div>
 
     <script src="script.js"></script>
-
-    
   </body>
 </html>
-
