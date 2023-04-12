@@ -4,16 +4,40 @@ const ticktacktoe = [
   ["x", "x", "o"],
   ["o", "**", "o"],
 ];
-
-console.log("Wynik")
+console.log(ticktacktoe[2][1]);
 
 // Zadanie 2.
+const coolArray = [1, 1, 2, 3, 5, 8, 13, 21, 34];
+for (let i = 0; i < coolArray.length; i++) {
+  coolArray[i] = coolArray[i] * 2;
+}
+console.log(coolArray);
 
 // Zadanie 3.
+const check = ticktacktoe.length;
+switch (check) {
+  case 1:
+    console.log("#green");
+    break;
+  case 2:
+    console.log("#red");
+    break;
+  case 3:
+    console.log("#blue");
+    break;
+  default:
+    console.log("#black");
+}
 
 // Zadanie 4.
+const theOffice = ["Michael", "Dwight", "Jim", "Pam", "Kevin"];
+for (let i = 0; i < theOffice.length; i++) {
+  theOffice[i] = theOffice[i].length;
+}
+console.log(theOffice);
 
 // Zadanie 5.
+
 const people = [
   "Beck, Glenn",
   "Becker, Carl",
@@ -57,12 +81,35 @@ const people = [
   "Blair, Tony",
   "Blake, William",
 ];
+console.log(people.sort());
 
 // Zadanie 6.
 const numbers = [
   11, -10, 50, 5, -8, 9, 20, 21, -4, 11, -5, -12, 100, 20, 14, 8, 19, 44, -21,
   -53, 17, -21,
 ];
+
+let michaelScott = numbers.filter((value) => value >= 20);
+console.log(`Elementy większe lub równe od 20: ${michaelScott}`);
+
+let suma = numbers.reduce((acc, currentValue) => acc + currentValue);
+console.log(`Suma elementów w tablicy: ${suma}`);
+
+let sumaUjemna = numbers.filter((value) => value < 0);
+let sumaUjemnaX = sumaUjemna.reduce((acc, currentValue) => acc + currentValue);
+console.log(`Suma elementów ujemnych: ${sumaUjemnaX}`);
+
+let odd = [];
+let even = [];
+function splitNumbers(numbers) {
+  for (let i = 0; i < numbers.length; i++)
+    (i % 2 == 0 ? even : odd).push(numbers[i]);
+  console.log(even);
+}
+splitNumbers(numbers);
+
+let sumaParz = even.reduce((acc, currentValue) => acc + currentValue);
+console.log(`Suma indeksów parzystych: ${sumaParz}`);
 
 // Zadanie 7.
 
@@ -71,6 +118,30 @@ const numbers = [
 // Zadanie 9.
 
 // Zadanie 10.
+
+const today = new Date();
+const days = today.getDate();
+const months = today.getMonth();
+console.log(months);
+let arrayMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+let alreadyKnown = [];
+let notKnownYet = [];
+
+// Ile dni które już znamy //
+
+for (let b = 0; b < arrayMonth.length; b++)
+  (b < months ? alreadyKnown : notKnownYet).push(arrayMonth[b]);
+let sumeMe = alreadyKnown.reduce((acc, currentValue) => acc + currentValue);
+let sumaOnceAgain = arrayMonth.reduce(
+  (acc, currentValue) => acc + currentValue
+); //suma dni we wszystkich miesiącach
+
+// Różca dni które już zamy - dni których jeszcze nie znamy //
+function daysUntilChristmas() {
+  let leftDays = sumaOnceAgain - sumeMe;
+  console.log(`${leftDays} days left until Christmas`);
+}
+daysUntilChristmas();
 
 // Zadanie 11.
 const students = [
@@ -86,7 +157,52 @@ const requirements = {
   minTasksDone: 100,
 };
 
+function checkJuniorReq() {
+  let goodPeople = [];
+  let badPeople = [];
+  for (let s = 0; s < students.length; s++) {
+    let studentsName = students[s].name;
+    let tasksCompleted = students[s].tasksDone;
+    let spendHours = students[s].hoursSpent;
+    if (
+      tasksCompleted >= requirements.minTasksDone &&
+      spendHours >= requirements.minHoursSpent
+    ) {
+      goodPeople.push(studentsName);
+    } else {
+      badPeople.push(studentsName);
+    }
+  }
+  console.log(
+    `${goodPeople} - gratulacje! Ciężka praca popłaca! ${badPeople} - DO ROBOTY LENIE! `
+  );
+}
+checkJuniorReq();
+
 // Zadanie 12.
+
+function toCamelCase(wordsDontComeEasy) {
+  const regex = /[-_]/gm; //wymiana - i _ na spacje
+  wordsDontComeEasy = wordsDontComeEasy.replace(regex, " ");
+  // console.log(wordsDontComeEasy)  // zwrócenie słów w tablicy
+  let split = wordsDontComeEasy.split(" ");
+  // console.log(split);
+  split = split.map((item, index) => {
+    if (index !== 0) {
+      return item.charAt(0).toUpperCase() + item.slice(1);
+    } else if (index === 0 && item.charAt(0) === item.charAt(0).toUpperCase()) {
+      return item;
+    } else {
+      return item;
+    }
+  });
+  console.log(split.join(""));
+}
+toCamelCase("Jak-sobota_to-tylko_do-lidla");
+toCamelCase("i-ujrzałem_naród-co_bez-celu_się-błąka");
+toCamelCase("zamknięty-Lidl-zamknięta.Biedronka");
+
+// console.log("test");
 
 // Zadanie 13.
 const idUsers = {
@@ -151,3 +267,11 @@ const idUsers = {
     jobTitle: "GIS Technical Architect",
   },
 };
+console.log("test")
+function correctData(idUsers) {
+  const fancyArray = [];
+// pętla for?
+
+  console.log (fancyArray);
+}
+correctData(idUsers);

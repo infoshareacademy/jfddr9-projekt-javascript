@@ -131,3 +131,47 @@ const people = [
     age: 25,
   },
 ];
+
+// ZADANIE 7 //
+let i = 0;
+let citizenship = people[i].race;
+const showOnlyUsersWithRace = (citizenship) => {
+  const filtered = people.filter((person) => person.race === citizenship);
+  return filtered;
+};
+const result = showOnlyUsersWithRace("Cambodian");
+console.log(result);
+
+
+// ZADANIE 8 //
+
+const humans = () => {
+  for (x = 0; x < people.length; x++) {
+    const titLe = people[x].title;
+    const firstName = people[x].first_name;
+    const lastName = people[x].last_name;
+    const jobTitle = people[x].job_title;
+    const compAny = people[x].company;
+    console.log(
+      `${titLe} ${firstName} ${lastName} works as ${jobTitle} in ${compAny}`
+    );
+  }
+};
+humans();
+
+// ZADANIE 9 //
+const slimPeople = [];
+const bmi = () => {
+  for (y = 0; y < people.length; y++) {
+    let height = (people[y].age + 100) * 0.01;
+    height = Math.pow(height, 2);
+    let weight = people[y].age + 10;
+    let fattyFat = weight / height;
+    let result = people[y].first_name;
+    if (fattyFat >= 18.5 && fattyFat <= 24.99) {
+      slimPeople.push(result);
+    }
+  }
+};
+bmi();
+console.log(slimPeople);
