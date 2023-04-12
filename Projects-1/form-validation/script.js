@@ -4,6 +4,7 @@ const usernameInput = document.querySelector("#validationCustomUsername");
 const cityInput = document.querySelector("#validationCustom03");
 const stateInput = document.querySelector("#validationCustom04");
 const zipInput = document.querySelector("#validationCustom05");
+const button = document.querySelector(".btn-primary");
 
 firstNameInput.addEventListener("change", firstNameValidation);
 lastNameInput.addEventListener("change", lastNameValidation);
@@ -11,6 +12,7 @@ usernameInput.addEventListener("change", usernameValidation);
 cityInput.addEventListener("change", cityValidation);
 stateInput.addEventListener("change", stateValidation);
 zipInput.addEventListener("change", zipValidation);
+button.addEventListener("click", agreeValidation);
 
 const MIN_NAME_LENGTH = 3;
 const MAX_NAME_LENGTH = 100;
@@ -184,6 +186,13 @@ function checkScopeZip(number) {
 
 
 //AKCEPTACJA ZGODY
-function agreeTValidation() {
+function agreeValidation() {
+  const formCheck = document.querySelector("#invalidCheck");
+  const validationDiv = document.querySelector(".invalid-feedback");
 
+  validationDiv.innerHTML = "";
+
+  if(!formCheck) {
+    showNameErrorMessage("Aby przejść dalej musisz zaakceptować zgody", ".invalid-feedback")
+  }
 }
