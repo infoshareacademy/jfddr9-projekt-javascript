@@ -14,6 +14,7 @@ const ticktacktoe = [
 ];
 ```
 
+
 ### Zadanie 2.
 
 Stwórz funkcję `multiplyBy2()`, która mnoży elementy w tablicy razy 2.

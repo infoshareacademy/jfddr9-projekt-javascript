@@ -5,15 +5,68 @@ const ticktacktoe = [
   ["o", "**", "o"],
 ];
 
-console.log("Wynik")
+console.log("Wynik");
+console.log(ticktacktoe[2][1]);
 
 // Zadanie 2.
+// Stwórz funkcję `multiplyBy2()`, która mnoży elementy w tablicy razy 2.
+
+const array1 = [1, 5, 8, 21];
+
+console.log(array1.map((item) => item * 2));
 
 // Zadanie 3.
+// Napisz funkcję `check()`, która przyjmuje w parametrze tablicę - w zależności od długości tablicy - funkcja powinna zwrócić odpowiedni string z kolorem:
+
+// - 1 = "#green"
+// - 2 = "#red"
+// - 3 = "#blue"
+// - Każdy inny = "#black"
+
+// Użyj `switch` statement.
+
+const number = [1, 5];
+
+const colorByArrayLength = function check(array) {
+  switch (array.length) {
+    case 1:
+      return "green";
+      break;
+
+    case 2:
+      return "red";
+      break;
+
+    case 3:
+      return "blue";
+      break;
+
+    default:
+      return "black";
+      break;
+  }
+};
+
+console.log(colorByArrayLength(number));
 
 // Zadanie 4.
+// Napisz funkcję `stringLength()` która jako parametr przyjmie tablicę stringów i zwróci tablicę ich długości.
+
+const myFriends = ["Ula", "Zuzanna", "Zygfryd", "Fryderyk"];
+
+//DŁUŻSZY ZAPIS FUNKCJI
+const stringLength = (array) => {
+  return array.map((item) => item.length);
+};
+
+//KRÓTSZY ZAPIS FUNKCJI
+// const stringLength = array => {return array.map((item) => item.length)};
+
+console.log(stringLength(myFriends));
 
 // Zadanie 5.
+//Posortuj osoby z tablicy `people` alfabetycznie według nazwiska.
+
 const people = [
   "Beck, Glenn",
   "Becker, Carl",
@@ -57,6 +110,19 @@ const people = [
   "Blair, Tony",
   "Blake, William",
 ];
+
+const sortBySecondElement = arr => {
+  // return arr.map(text => text.split(',')[1]).sort()
+  return arr.sort((textA, textB) => {
+    let lastNameA = textA.split(',')[0]
+    let lastnameB = textB.split(',')[0]
+    console.log(lastNameA)
+    console.log(lastnameB)
+    return lastNameA.localeCompare(lastnameB)
+  })
+}
+
+console.log(sortBySecondElement(people));
 
 // Zadanie 6.
 const numbers = [
