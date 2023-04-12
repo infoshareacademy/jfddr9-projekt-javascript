@@ -32,7 +32,7 @@ function checkIsOnlyLetters(text) {
 }
 
 function checkIsOnlyDash(symbol) {
-  const regEx = new RegExp(/^([a-zA-Z])+-{0,1}([a-zA-Z])+$/);
+  const regEx = new RegExp(/^([a-zA-Z])+-?([a-zA-Z])+$/);
   return symbol.match(regEx);
 }
 
@@ -156,13 +156,8 @@ function stateValidation() {
   const validationDiv = document.querySelector("#stateValidationMessage");
 
   validationDiv.innerHTML = "";
-
-  //co jest nie tak w tym warunku?
-  if (
-    stateValue !== "Kujawsko-pomorskie" ||
-    stateValue !== "kuj-pom" ||
-    stateValue !== "kuj-pomorskie"
-  ) {
+  let stateNames = ["Kujawsko-pomorskie", "kuj-pom", "kuj-pomorskie"];
+  if (!stateNames.includes(stateValue)) {
     showNameErrorMessage(
       "Niepoprawna nazwa województwa",
       "#stateValidationMessage"
@@ -176,9 +171,19 @@ function zipValidation() {
   const validationDiv = document.querySelector("#zipValidationMessage");
 
   validationDiv.innerHTML = "";
+
+  if (!checkScopeZip(zipValue)) {
+    showNameErrorMessage("Niepoprawny kod pocztowy", "#zipValidationMessage");
+  }
 }
 
 function checkScopeZip(number) {
-  const regEx = new RegExp(/^[a-zA-Z0-9]+$/);
+  const regEx = new RegExp(/^([85]{2})(?:-[0-9]{3})?$/);
   return number.match(regEx);
+}
+
+
+//AKCEPTACJA ZGODY
+function agreeTValidation() {
+
 }
