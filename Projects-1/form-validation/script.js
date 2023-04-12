@@ -3,14 +3,16 @@ const lastNameInput = document.querySelector("#validationCustom02");
 const usernameInput = document.querySelector("#validationCustomUsername");
 const cityInput = document.querySelector("#validationCustom03");
 const stateInput = document.querySelector("#validationCustom04");
+const zipInput = document.querySelector("#validationCustom05");
 
 firstNameInput.addEventListener("change", firstNameValidation);
 lastNameInput.addEventListener("change", lastNameValidation);
 usernameInput.addEventListener("change", usernameValidation);
 cityInput.addEventListener("change", cityValidation);
 stateInput.addEventListener("change", stateValidation);
+zipInput.addEventListener("change", zipValidation);
 
-const MIN_NAME_LENGTH = 10;
+const MIN_NAME_LENGTH = 3;
 const MAX_NAME_LENGTH = 100;
 const MIN_USERNAME_LENGTH = 10;
 const MAX_USERNAME_LENGTH = 30;
@@ -27,6 +29,11 @@ function showNameErrorMessage(errorMessage, id) {
 function checkIsOnlyLetters(text) {
   const regEx = new RegExp(/^[a-zA-Z]+$/);
   return text.match(regEx);
+}
+
+function checkIsOnlyDash(symbol) {
+  const regEx = new RegExp(/^([a-zA-Z])+-{0,1}([a-zA-Z])+$/);
+  return symbol.match(regEx);
 }
 
 //IMIE
@@ -86,8 +93,8 @@ function lastNameValidation() {
     );
   }
 
-  //tylko literki
-  if (!checkIsOnlyLetters(lastNameValue)) {
+  //nazwisko z myślnikiem
+  if (!checkIsOnlyDash(lastNameValue)) {
     showNameErrorMessage(
       "Błędne znaki w imieniu",
       "#lastNameValidationMessage"
@@ -156,8 +163,22 @@ function stateValidation() {
     stateValue !== "kuj-pom" ||
     stateValue !== "kuj-pomorskie"
   ) {
-    showNameErrorMessage("Niepoprawna nazwa województwa", "#stateValidationMessage");
+    showNameErrorMessage(
+      "Niepoprawna nazwa województwa",
+      "#stateValidationMessage"
+    );
   }
 }
 
+//KOD POCZTOWY
+function zipValidation() {
+  const zipValue = zipInput.value;
+  const validationDiv = document.querySelector("#zipValidationMessage");
 
+  validationDiv.innerHTML = "";
+}
+
+function checkScopeZip(number) {
+  const regEx = new RegExp(/^[a-zA-Z0-9]+$/);
+  return number.match(regEx);
+}
